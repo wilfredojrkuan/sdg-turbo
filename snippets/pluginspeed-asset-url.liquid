@@ -1,0 +1,1 @@
+{%- assign target_asset = 'pluginspeed.min.' | append: asset -%}{%- if have_minified == true and asset_exists == true -%}{{ target_asset | asset_url }}{%- else -%}{{ asset | asset_url }}{%- endif -%}

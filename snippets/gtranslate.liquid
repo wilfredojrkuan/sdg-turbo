@@ -1,0 +1,53 @@
+<style>
+  .gtranslate_wrapper {
+    display: none;
+  }
+  .first_link:hover + .gtranslate_wrapper {
+    display: block;
+  }
+  .gtranslate_wrapper:hover {
+    display: block;
+  }
+  .gtranslate_wrapper.gt_container--oiz9qs {
+    position: absolute;
+    top: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    z-index: 999;
+    background: white;
+}
+  .gtranslate_wrapper a span {
+    color: black!important;
+} 
+</style>
+<div class="first_link">
+  <a href="#">Translate</a>  
+</div>
+
+<div class="gtranslate_wrapper">
+    
+</div>
+<script>
+  var wrapper = document.querySelector(".gtranslate_wrapper");
+  var firstLink = document.querySelector(".first_link");
+
+  wrapper.addEventListener("mouseover", function(event) {
+    if (event.target.classList.contains("first_link")) {
+      var hiddenLinks = wrapper.querySelectorAll(".hidden_link");
+      hiddenLinks.forEach(function(link) {
+        link.style.display = "inline-block";
+      });
+    }
+  });
+
+  wrapper.addEventListener("mouseout", function(event) {
+    if (event.target.classList.contains("first_link")) {
+      var hiddenLinks = wrapper.querySelectorAll(".hidden_link");
+      hiddenLinks.forEach(function(link) {
+        link.style.display = "none";
+      });
+    }
+  });
+</script>
+<script>window.gtranslateSettings = {"default_language":"en","url_structure":"sub_domain","languages":["en","fr","de","it","ru","es"],"wrapper_selector":".gtranslate_wrapper","flag_size":24,"flag_style":"3d"}</script>
+<script src="https://cdn.gtranslate.net/widgets/latest/fc.js" defer></script>

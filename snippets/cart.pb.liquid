@@ -1,0 +1,46 @@
+
+{% assign pb_total_price = 0 %}
+{% assign pb_original_total_price = 0 %}
+{% for item in cart.items %}
+    {% assign _price = item.line_price %}
+    {% assign _original_price = item.original_line_price %}
+    {% for property in item.properties %}
+        {% if property.first == '_pbCurrentPrice' %}
+            {% assign _price = property.last | times: item.quantity %}
+            {% assign _original_price = property.last | times: item.quantity %}
+        {% endif %}
+    {% endfor %}
+    {% assign pb_total_price = pb_total_price | plus: _price %}
+    {% assign pb_original_total_price = pb_original_total_price | plus: _original_price %}
+{% endfor %}
+{% capture pb_inside_cart %}
+<script type="text/javascript">
+function checkBundles(form) {
+    const action = '/apps/productbuilder/create_draft_order/';
+    const checkoutButtons = Array.prototype.slice.call(form.querySelectorAll('[name="checkout"]'));
+    if (checkoutButtons.length > 0) {
+        checkoutButtons.forEach(function(checkoutButton){
+            checkoutButton.setAttribute('formaction', action);
+            console.log('Checkout button action changed to', action);
+        });
+    } else {
+        form.action = action;
+        console.log('Form action changed to', action);
+    }
+}
+function pbCheckCart(){
+    var cartForms = Array.prototype.slice.call(document.querySelectorAll('form[action="/cart"],form[action="/checkout"]'));
+    if (cartForms.length > 0) {
+        cartForms.forEach(checkBundles);
+    } else {
+        console.log('PB: there is no cart form');
+    }
+};
+document.addEventListener('load', pbCheckCart);
+window.pbCheckCart = pbCheckCart;
+pbCheckCart();
+</script>
+<input type="hidden" name="_cart" value="{{ cart | json | escape }}" />
+<input type="hidden" name="shop_id" value="{{ shop.permanent_domain | escape }}" />
+<input type="hidden" id="pb_proxy_prefix" value="/apps/productbuilder" />
+{% endcapture %}

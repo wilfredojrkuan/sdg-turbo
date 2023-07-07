@@ -1,0 +1,39 @@
+<p class="ship-ctr">Order in the next <span id='HMSremaining'></span> <span id="fromDate" style="display:none;"></span> to get it by <span id="toDate"></span>.</p>
+
+
+{{ '//cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js' | script_tag }}
+{% comment pluginspeed replaced-js DON'T CHANGE %}{{ 'jquery.min.js' | asset_url | script_tag }}{% endcomment %}{%- include 'pluginspeed-minify-asset', asset: 'jquery.min.js', tag: 'script', liquid_tag: true , inline: true -%}
+          <script >
+    var fromDate = Date.today().addDays(14);
+var now = new Date();
+if (fromDate.is().saturday() || fromDate.is().sunday()) {
+    fromDate = fromDate.next().monday();
+}
+var toDate = Date.today().addDays(25);
+if (toDate.is().saturday() || toDate.is().sunday()) {
+    toDate = toDate.next().monday();
+}
+document.getElementById('fromDate').innerHTML = fromDate.toString('ddd MMM d');
+document.getElementById('toDate').innerHTML = toDate.toString('ddd MMM d');
+          </script>
+
+<script>
+function calculateHMSleft()
+{
+	//calculate
+	var now = new Date();
+	var hoursleft = 23-now.getHours();
+	var minutesleft = 59-now.getMinutes();
+	var secondsleft = 59-now.getSeconds();
+
+	//format 0 prefixes
+	if(minutesleft<10) minutesleft = "0"+minutesleft;
+	if(secondsleft<10) secondsleft = "0"+secondsleft;
+
+	//display
+	$('#HMSremaining').html(hoursleft+" hours and "+minutesleft+" minutes");
+}
+
+calculateHMSleft();
+setInterval(calculateHMSleft, 1000);
+</script>

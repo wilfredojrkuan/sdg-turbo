@@ -1,0 +1,92 @@
+<div class='additional-checkout-buttons'>
+  							<span class='laybuy_or'>- or -</span>
+	    				<form action='http://{{shop.permanent_domain}}/cart/add' method='post'>
+					            {% for variant in product.variants %}
+					                {% if variant.available %}
+					            {% if variant == product.selected_or_first_available_variant %}
+					          <input type='hidden' name='id' id='laybuy_vari_id' value='{{ variant.id }}' />
+					            
+					             {% endif %}
+					             {% endif %}
+					              {% endfor %}
+					            <select name='laybuy_varient' id='laybuy_varient_select' class='laybuy_product-single__variants' style='display:none;'>
+					              {% for variant in product.variants %}
+					                {% if variant.available %}
+
+					                  <option {% if variant == product.selected_or_first_available_variant %} selected='selected' {% endif %} data-sku='{{ variant.sku }}' value='{{ variant.id }}'>{% for variant_options in variant.options %}{% if forloop.index > 1 %}{{variant_options}}{% else %}{{variant_options}}{% endif %}{% endfor %}</option>
+
+					                {% else %}
+					                  <option disabled='disabled'>
+					                    {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+					                  </option>
+					                {% endif %}
+					              {% endfor %}
+					            </select>
+					            <input type='hidden' id='laybuy_quantity' name='quantity' value='1' />
+					            <input type='hidden' name='return_to' value='/checkout' />
+					            <input type='submit' name='laybuy' id='laybuy_submit_button' value='' />
+					          </form>
+					          <script type='text/javascript'>
+					            
+					             var total_varients={{product.options.size}};
+					             jQuery( window ).load(function() {
+					               changeLaybuyValue();
+					                {% for pro_options in product.options %}
+					               jQuery('select#productSelect-option-{% increment lay_variable %}').bind('change', function() {
+					                        changeLaybuyValue();
+					                    });
+					               {% endfor %}
+					            jQuery('.quantity-selector').change(function(){
+					            			jQuery('#laybuy_quantity').val(jQuery(this).val());
+					            });
+					                  function changeLaybuyValue(){
+					                    		
+					                    		var pro_var_val='';
+											 {% for pro_options in product.options %}
+					                    			var pro{% increment lay_variable1 %}=jQuery('select#productSelect-option-{% increment lay_variable2 %} option:selected').val();
+					                         		pro_var_val +=pro{% increment lay_variable3 %};
+					                         {% endfor %}
+					                      
+					                    	var l_option_id1='';
+					                    	l_option_id1=jQuery('#laybuy_varient_select option:contains('+pro_var_val+')').attr('value');
+											jQuery('#laybuy_vari_id').val(l_option_id1);
+					                         if(l_option_id1){
+					                           		
+					                           		jQuery('#laybuy_submit_button').prop('disabled', false);
+					                           		jQuery('#laybuy_submit_button').removeClass('disabled_laybuy');
+					                         }else{
+					                           		
+					                         		jQuery('#laybuy_submit_button').prop('disabled', true);
+					                         		jQuery('#laybuy_submit_button').addClass('disabled_laybuy');
+					                         }
+					                    	l_option_id1='';
+					                    	
+					                  }
+					             });
+					            
+					          </script>
+					          <style type='text/css'>
+					            #laybuy_submit_button {
+					                background-color: transparent;
+					                background-image: url('https://lay-buys.com/gateway/LAY-BUY.png');
+					                background-position: -1px -1px;
+					                background-size: 101% 101%;
+					                height: 30px;
+					                width: 117px;
+					              }
+					              .laybuy_or {
+									    color: #666;
+									    float: left;
+									    font-weight: bold;
+									    margin: 0 7px;
+									}
+									.laybuy_or {
+										  display: block;
+										  margin-bottom: 24px !important;
+										  padding-left: 33px;
+										  width: 100%;
+										}
+									.disabled_laybuy {
+										  opacity: 0.4;
+										}
+					          </style></div>

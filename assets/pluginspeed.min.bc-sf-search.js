@@ -1,0 +1,1 @@
+var bcSfSearchSettings={search:{suggestionPosition:"right"}};BCSfFilter.prototype.customizeSuggestion=function(t,e,i){jQ(i).closest(".search_container").length>0&&this.setSuggestionWidth(i,400)};

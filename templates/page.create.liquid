@@ -1,0 +1,985 @@
+<div class="heroCustomizer desactiveHero">
+  <div class="minWidth">
+    <h2>Genie Customizer</h2>
+    <h4>Build the doll of your dream in four easy steps</h4>
+    <div class="steps">
+      <div class="step active previousStep" dataleftprevious='-100%'>
+        <div class="number">
+          1
+        </div>
+        <div class="sentenceStep">
+          <p>
+            <b>Define</b> global attributes of your doll.
+          </p>
+        </div>
+      </div>
+      <div class="step desactive previousStep" dataleftprevious='-200%'>
+        <div class="number">
+          2
+        </div>
+        <div class="sentenceStep">
+          <p>
+            <b>Choose</b> one doll from the results.
+          </p>
+        </div>
+      </div>
+      <div class="step desactive previousStep" dataleftprevious='-300%'>
+        <div class="number">
+          3
+        </div>
+        <div class="sentenceStep">
+          <p>
+            <b>Customize</b> all parts of your selected doll.
+          </p>
+        </div>
+      </div>
+      <div class="step desactive previousStep" dataleftprevious='-400%'>
+        <div class="number">
+          4
+        </div>
+        <div class="sentenceStep">
+          <p>
+            <b>Confirm</b> your order and checkout.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="customizer_app initialized" style="left: 0%;" data-authentication='notAuthenticated'>
+    <div class="flex_form stepOne">
+      <div class="loadCustomizerContainer">
+        <div class="snnipet"></div>
+        <!-- <b class="porcentLoad">5%</b> -->
+        <div class="notificationLoad">
+          <p class="content">
+            We are preparing the customizer to give you <b>the best experience</b>, this may take a few seconds...
+          </p>
+        </div>
+      </div>
+      <div class="UserAutenticationContainer">
+        <div class="options">
+          <div class="headerLoginOptions">
+            <h4>Login to get started with your customization</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro perspiciatis recusandae iure aperiam nemo consequuntur commodi et facere similique pariatur?</p>
+          </div>
+            <div class="facebookBtn">
+              {% render 'icon-facebook' %}
+              Facebook
+            </div>
+            <div class="googleBtn">
+              {% render 'icon-google' %}
+              Google
+            </div>
+            <div class="appleIDBtn">
+              {% render 'icon-apple' %}
+              Apple ID
+            </div>
+            <div class="microsoftBtn">
+              {% render 'icon-microsoft' %}
+              Microsoft
+            </div>
+            <div class="EmailAndPasswordBtn">
+              Email and Password
+            </div>
+        </div>
+      </div>
+      <div class="welcomeCustomizer">
+        <div class="avatar"></div>
+        <h4 class="userName"></h4>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem ea nisi saepe pariatur quas dolor dicta architecto aspernatur quam eius.</p>
+        <button class="btn_save_desactive nextStep" id='startNowButton'>
+          START NOW
+        </button>
+      </div>
+    </div>
+
+    <div class="flex_form_desactive stepTwo">
+      <div class="minWidth wrap">
+        <div class="column_customizer_app">
+        
+          <div class="field_attributes">
+            <h3 class="h3">
+              Height
+            </h3>
+            <div class="popUpHover_wrapper">
+              <button class="togglePopUpHover">
+                {% render 'icon-question' %}
+              </button>
+              <div class="popUpHover">
+                <b>Height Range</b>
+                <p>
+                  Indicate a range of height, you can also change the unit of measurement from centimeters to inches and vice versa.
+                </p>
+              </div>
+            </div>
+            <div class="fields" typeFilter="heights" typeInputs="range">
+              <button class="togglePopUpHoverChange">
+                {% render 'icon-change' %}
+              </button>
+              <span class="heightsRangeMonitor"></span>
+            </div>
+          </div>
+  
+          <div class="field_attributes">
+            <h3>
+              Genders
+            </h3>
+            <div class="popUpHover_wrapper">
+              <button class="togglePopUpHover">
+                {% render 'icon-question' %}
+              </button>
+              <div class="popUpHover">
+                <b>Weight Range</b>
+                <p>
+                  Choose your range of weights, we have 4 ranges from Very Light to Heavy, the unit of measurement pounds.
+                </p>
+              </div>
+            </div>
+            <div class="fields" typeFilter="genders" typeInputs="uniqueSelection"></div>
+          </div>
+
+          <div class="field_attributes ">
+            <h3>
+              Hip Size
+            </h3>
+            <div class="popUpHover_wrapper">
+              <button class="togglePopUpHover">
+                {% render 'icon-question' %}
+              </button>
+              <div class="popUpHover">
+                <b>Hip Size</b>
+                <p>
+                  Choose your hip size between Tiny, Small and Large.
+                </p>
+              </div>
+            </div>
+            <div class="fields" typeFilter="hipSize" typeInputs="uniqueSelection"></div>
+          </div>
+  
+          <div class="field_attributes ">
+            <h3>
+              Weight
+            </h3>
+            <div class="popUpHover_wrapper">
+              <button class="togglePopUpHover">
+                {% render 'icon-question' %}
+              </button>
+              <div class="popUpHover">
+                <b>Weight Range</b>
+                <p>
+                  Choose your range of weights, we have 4 ranges from Very Light to Heavy, the unit of measurement pounds.
+                </p>
+              </div>
+            </div>
+            <div class="fields" typeFilter="weights" typeInputs="uniqueSelection"></div>
+          </div>
+  
+          <div class="field_attributes ">
+            <h3>
+              Hair
+            </h3>
+            <div class="popUpHover_wrapper">
+              <button class="togglePopUpHover">
+                {% render 'icon-question' %}
+              </button>
+              <div class="popUpHover">
+                <b>Hair Color</b>
+                <p>
+                  You can choose a specific hair color, this field is a unique selection.
+                </p>
+              </div>
+            </div>
+            <div class="fields" typeFilter="hairColors" typeInputs="uniqueSelectionWithColor"></div>
+          </div>
+  
+        </div>
+        <div class="column_customizer_app">
+          <div class="field_attributes ">
+            <h3>
+              Cup Size
+            </h3>
+            <div class="popUpHover_wrapper">
+              <button class="togglePopUpHover">
+                {% render 'icon-question' %}
+              </button>
+              <div class="popUpHover">
+                <b>Cup Size</b>
+                <p>
+                  Choose your cup size from A to P.
+                </p>
+              </div>
+            </div>
+            <div class="fields" typeFilter="cupSize" typeInputs="range">
+              <span class="valueRange cupSizeRangeMonitor"></span>
+            </div>
+          </div>
+  
+          <div class="field_attributes ">
+            <h3>
+              Materials
+            </h3>
+            <div class="popUpHover_wrapper">
+              <button class="togglePopUpHover">
+                {% render 'icon-question' %}
+              </button>
+              <div class="popUpHover">
+                <b>Material</b>
+                <p>
+                  Choose your hip size between Tiny, Small and Large.
+                </p>
+              </div>
+            </div>
+            <div class="fields" typeFilter="materials" typeInputs="uniqueSelection"></div>
+          </div>
+  
+          <div class="field_attributes ">
+            <h3>
+              Looks
+            </h3>
+            <div class="popUpHover_wrapper">
+              <button class="togglePopUpHover">
+                {% render 'icon-question' %}
+              </button>
+              <div class="popUpHover">
+                <b>Doll appearance</b>
+                <p>
+                  There is a great variety of appearances that you can select, this field is of initial selection.
+                </p>
+              </div>
+            </div>
+            <div class="fields" typeFilter="looks" typeInputs="uniqueSelection"></div>
+          </div>
+          
+          <div class="field_attributes nextToGridDolls">
+            <button class="btn_save desactive nextStep">
+              Continue & Select a doll
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex_form_desactive stepThree">
+      <div class="headerStepThree">
+        <h3 class="resultSentence"></h3>
+        <div class="filters">
+          <select name="" id="sortByCustomizer">
+            <option value="moreRecent">Newest</option>
+            <option value="lowerPrices">Lower prices</option>
+            <option value="higherPrices">Higher prices</option>
+          </select>
+        </div>
+      </div>
+      <div class="dollsContainer">
+
+      </div>
+      <div class='loadMoreDolls'>
+        <span>
+          VIEW MORE
+        </span>
+        <button class='loadDolls'>
+          {% render 'icon-chevron-down' %}
+        </button>
+      </div>
+    </div>
+
+    <div class="flex_form_desactive stepFour">
+
+      <div class="column_customizer_app">
+        <h3 class="h3">
+          Select part
+        </h3>
+        <div class="cards_customizer_app">
+          <div class="card_customizer_app">
+
+            <div class="header_card_customizer_app">
+              {% render 'icon-chevron-down' %}
+              <h4>
+                Top Body
+              </h4>
+              <div class="popUpHover_wrapper">
+                <button class="togglePopUpHover">
+                  {% render 'icon-question' %}
+                </button>
+                <div class="popUpHover">
+                  <b>Cup Size</b>
+                  <p>
+                    Choose your cup size from A to P.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="selection_parts_customizer_app">
+
+              <div class="selector_customizer_app desactive" draggable="true" part-data="head" >
+                <div class="drop_top"></div>
+                <div class="emptyPart">
+                  {% render 'icon-dragable' %}
+                  <div class="icon_selector">
+                    {% render 'icon-chevron-down' %}
+                  </div>
+                  <h4 class="name_selector_customizer_app">
+                    Head 
+                  </h4>
+                  <span>
+                    - Select part
+                  </span>
+                  <button class="btn_select" part-data="head">
+                    Select
+                  </button>
+                </div>
+                <div class="FillPart">
+                  {% render 'icon-dragable' %}
+                  <img class='imageCurrentOption' src="">
+                  <div class="contentOptionsPart">
+                    <h4 class="name_selector_customizer_app">
+                      Head <button class="btn_select" part-data="head">Edit</button>
+                    </h4>
+                    <span class="namepart"> - Name Part</span>
+                    <div class="gridOptions"></div>
+                  </div>
+                  <b class="priceOptionsTotal"></b>
+                </div>
+                <div class="drop_bottom"></div>
+              </div>
+
+              <div class="selector_customizer_app desactive" draggable="true" part-data="hairstyle" >
+                <div class="drop_top"></div>
+                <div class="emptyPart">
+                  {% render 'icon-dragable' %}
+                  <div class="icon_selector">
+                    {% render 'icon-chevron-down' %}
+                  </div>
+                  <h4 class="name_selector_customizer_app">
+                    Hairstyle 
+                  </h4>
+                  <span>
+                    - Select part
+                  </span>
+                  <button class="btn_select" part-data="hairstyle">
+                    Select
+                  </button>
+                </div>
+                <div class="FillPart">
+                  {% render 'icon-dragable' %}
+                  <img class='imageCurrentOption' src="">
+                  <div class="contentOptionsPart">
+                    <h4 class="name_selector_customizer_app">
+                      Hairstyle <button class="btn_select" part-data="hairstyle">Edit</button>
+                    </h4>
+                    <span class="namepart"> - Name Part</span>
+                    <div class="gridOptions"></div>
+                  </div>
+                  <b class="priceOptionsTotal"></b>
+                </div>
+                <div class="drop_bottom"></div>
+              </div>
+
+              <div class="selector_customizer_app desactive" draggable="true" part-data="eyes" >
+                <div class="drop_top"></div>
+                <div class="emptyPart">
+                  {% render 'icon-dragable' %}
+                  <div class="icon_selector">
+                    {% render 'icon-eyes' %}
+                  </div>
+                  <h4 class="name_selector_customizer_app">
+                    Eyes 
+                  </h4>
+                  <span>
+                    - Select part
+                  </span>
+                  <button class="btn_select" part-data="eyes">
+                    Select
+                  </button>
+                </div>
+                <div class="FillPart">
+                  {% render 'icon-dragable' %}
+                  <img class='imageCurrentOption' src="">
+                  <div class="contentOptionsPart">
+                    <h4 class="name_selector_customizer_app">
+                      Eyes <button class="btn_select" part-data="eyes">Edit</button>
+                    </h4>
+                    <span class="namepart"> - Name Part</span>
+                    <div class="gridOptions"></div>
+                  </div>
+                  <b class="priceOptionsTotal"></b>
+                </div>
+                <div class="drop_bottom"></div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="card_customizer_app">
+
+            <div class="header_card_customizer_app">
+              {% render 'icon-chevron-down' %}
+              <h4>
+                Body Part
+              </h4>
+              <div class="popUpHover_wrapper">
+                <button class="togglePopUpHover">
+                  {% render 'icon-question' %}
+                </button>
+                <div class="popUpHover">
+                  <b>Cup Size</b>
+                  <p>
+                    Choose your cup size from A to P.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="selection_parts_customizer_app">
+
+              <div class="selector_customizer_app desactive" draggable="true" part-data="skin color" >
+                <div class="drop_top"></div>
+                <div class="emptyPart">
+                  {% render 'icon-dragable' %}
+                  <div class="icon_selector">
+                  </div>
+                  <h4 class="name_selector_customizer_app">
+                    Skin Color 
+                  </h4>
+                  <span>
+                    - Select part
+                  </span>
+                  <button class="btn_select" part-data="skin color">
+                    Select
+                  </button>
+                </div>
+                <div class="FillPart">
+                  {% render 'icon-dragable' %}
+                  <img class='imageCurrentOption' src="">
+                  <div class="contentOptionsPart">
+                    <h4 class="name_selector_customizer_app">
+                      Skin Color <button class="btn_select" part-data="skin color">Edit</button>
+                    </h4>
+                    <span class="namepart"> - Name Part</span>
+                    <div class="gridOptions"></div>
+                  </div>
+                  <b class="priceOptionsTotal"></b>
+                </div>
+                <div class="drop_bottom"></div>
+              </div>
+
+              <div class="selector_customizer_app desactive" draggable="true" part-data="vagina type" >
+                <div class="drop_top"></div>
+                <div class="emptyPart">
+                  {% render 'icon-dragable' %}
+                  <div class="icon_selector">
+                    {% render 'icon-vagina-type' %}
+                  </div>
+                  <h4 class="name_selector_customizer_app">
+                    Vagina Type
+                  </h4>
+                  <span>
+                    - Select part
+                  </span>
+                  <button class="btn_select" part-data="vagina type">
+                    Select
+                  </button>
+                </div>
+                <div class="FillPart">
+                  {% render 'icon-dragable' %}
+                  <img class='imageCurrentOption' src="">
+                  <div class="contentOptionsPart">
+                    <h4 class="name_selector_customizer_app">
+                      Vagina Type <button class="btn_select" part-data="vagina type">Edit</button>
+                    </h4>
+                    <span class="namepart"> - Name Part</span>
+                    <div class="gridOptions"></div>
+                  </div>
+                  <b class="priceOptionsTotal"></b>
+                </div>
+                <div class="drop_bottom"></div>
+              </div>
+
+              <div class="selector_customizer_app desactive" draggable="true" part-data="labia color" >
+                <div class="drop_top"></div>
+                <div class="emptyPart">
+                  {% render 'icon-dragable' %}
+                  <div class="icon_selector">
+                  </div>
+                  <h4 class="name_selector_customizer_app">
+                    Labia Color 
+                  </h4>
+                  <span>
+                    - Select part
+                  </span>
+                  <button class="btn_select" part-data="labia color">
+                    Select
+                  </button>
+                </div>
+                <div class="FillPart">
+                  {% render 'icon-dragable' %}
+                  <img class='imageCurrentOption' src="">
+                  <div class="contentOptionsPart">
+                    <h4 class="name_selector_customizer_app">
+                      Labia Color <button class="btn_select" part-data="labia color">Edit</button>
+                    </h4>
+                    <span class="namepart"> - Name Part</span>
+                    <div class="gridOptions"></div>
+                  </div>
+                  <b class="priceOptionsTotal"></b>
+                </div>
+                <div class="drop_bottom"></div>
+              </div>
+
+              <div class="selector_customizer_app desactive" draggable="true" part-data="shoulders" >
+                <div class="drop_top"></div>
+                <div class="emptyPart">
+                  {% render 'icon-dragable' %}
+                  <div class="icon_selector">
+                    {% render 'icon-shoulders' %}
+                  </div>
+                  <h4 class="name_selector_customizer_app">
+                    Shoulders 
+                  </h4>
+                  <span>
+                    - Select part
+                  </span>
+                  <button class="btn_select" part-data="shoulders">
+                    Select
+                  </button>
+                </div>
+                <div class="FillPart">
+                  {% render 'icon-dragable' %}
+                  <img class='imageCurrentOption' src="">
+                  <div class="contentOptionsPart">
+                    <h4 class="name_selector_customizer_app">
+                      Shoulders <button class="btn_select" part-data="shoulders">Edit</button>
+                    </h4>
+                    <span class="namepart"> - Name Part</span>
+                    <div class="gridOptions"></div>
+                  </div>
+                  <b class="priceOptionsTotal"></b>
+                </div>
+                <div class="drop_bottom"></div>
+              </div>
+
+              <div class="selector_customizer_app desactive" draggable="true" part-data="public hairs" >
+                <div class="drop_top"></div>
+                <div class="emptyPart">
+                  {% render 'icon-dragable' %}
+                  <div class="icon_selector">
+                    {% render 'icon-public-hair' %}
+                  </div>
+                  <h4 class="name_selector_customizer_app">
+                    Public Hairs  
+                  </h4>
+                  <span>
+                    - Select part
+                  </span>
+                  <button class="btn_select" part-data="public hairs">
+                    Select
+                  </button>
+                </div>
+                <div class="FillPart">
+                  {% render 'icon-dragable' %}
+                  <img class='imageCurrentOption' src="">
+                  <div class="contentOptionsPart">
+                    <h4 class="name_selector_customizer_app">
+                      Public Hairs  <button class="btn_select" part-data="public hairs">Edit</button>
+                    </h4>
+                    <span class="namepart"> - Name Part</span>
+                    <div class="gridOptions"></div>
+                  </div>
+                  <b class="priceOptionsTotal"></b>
+                </div>
+                <div class="drop_bottom"></div>
+              </div>
+
+              <div class="selector_customizer_app desactive" draggable="true" part-data="feet" >
+                <div class="drop_top"></div>
+                <div class="emptyPart">
+                  {% render 'icon-dragable' %}
+                  <div class="icon_selector">
+                    {% render 'icon-feet' %}
+                  </div>
+                  <h4 class="name_selector_customizer_app">
+                    Feet 
+                  </h4>
+                  <span>
+                    - Select part
+                  </span>
+                  <button class="btn_select" part-data="feet">
+                    Select
+                  </button>
+                </div>
+                <div class="FillPart">
+                  {% render 'icon-dragable' %}
+                  <img class='imageCurrentOption' src="">
+                  <div class="contentOptionsPart">
+                    <h4 class="name_selector_customizer_app">
+                      Feet<button class="btn_select" part-data="feet">Edit</button>
+                    </h4>
+                    <span class="namepart"> - Name Part</span>
+                    <div class="gridOptions"></div>
+                  </div>
+                  <b class="priceOptionsTotal"></b>
+                </div>
+                <div class="drop_bottom"></div>
+              </div>
+
+              <div class="selector_customizer_app desactive" draggable="true" part-data="mouth">
+                <div class="drop_top"></div>
+                <div class="emptyPart">
+                  {% render 'icon-dragable' %}
+                  <div class="icon_selector">
+                    {% render 'icon-mouth' %}
+                  </div>
+                  <h4 class="name_selector_customizer_app">
+                    Mouth 
+                  </h4>
+                  <span>
+                    - Select part
+                  </span>
+                  <button class="btn_select" part-data="mouth">
+                    Select
+                  </button>
+                </div>
+                <div class="FillPart">
+                  {% render 'icon-dragable' %}
+                  <img class='imageCurrentOption' src="">
+                  <div class="contentOptionsPart">
+                    <h4 class="name_selector_customizer_app">
+                      Mouth<button class="btn_select" part-data="mouth">Edit</button>
+                    </h4>
+                    <span class="namepart"> - Name Part</span>
+                    <div class="gridOptions"></div>
+                  </div>
+                  <b class="priceOptionsTotal"></b>
+                </div>
+                <div class="drop_bottom"></div>
+              </div>
+
+              <div class="selector_customizer_app desactive" draggable="true" part-data="wig" >
+                <div class="drop_top"></div>
+                <div class="emptyPart">
+                  {% render 'icon-dragable' %}
+                  <div class="icon_selector">
+                    {% render 'icon-hair' %}
+                  </div>
+                  <h4 class="name_selector_customizer_app">
+                    Wig
+                  </h4>
+                  <span>
+                    - Select part
+                  </span>
+                  <button class="btn_select" part-data="wig">
+                    Select
+                  </button>
+                </div>
+                <div class="FillPart">
+                  {% render 'icon-dragable' %}
+                  <img class='imageCurrentOption' src="">
+                  <div class="contentOptionsPart">
+                    <h4 class="name_selector_customizer_app">
+                      Wig <button class="btn_select" part-data="wig">Edit</button>
+                    </h4>
+                    <span class="namepart"> - Name Part</span>
+                    <div class="gridOptions"></div>
+                  </div>
+                  <b class="priceOptionsTotal"></b>
+                </div>
+                <div class="drop_bottom"></div>
+              </div>
+
+              <div class="selector_customizer_app desactive" draggable="true" part-data="vagina" >
+                <div class="drop_top"></div>
+                <div class="emptyPart">
+                  {% render 'icon-dragable' %}
+                  <div class="icon_selector">
+                    {% render 'icon-vagina' %}
+                  </div>
+                  <h4 class="name_selector_customizer_app">
+                    Vagina
+                  </h4>
+                  <span>
+                    - Select part
+                  </span>
+                  <button class="btn_select" part-data="vagina">
+                    Select
+                  </button>
+                </div>
+                <div class="FillPart">
+                  {% render 'icon-dragable' %}
+                  <img class='imageCurrentOption' src="">
+                  <div class="contentOptionsPart">
+                    <h4 class="name_selector_customizer_app">
+                      Vagina <button class="btn_select" part-data="vagina">Edit</button>
+                    </h4>
+                    <span class="namepart"> - Name Part</span>
+                    <div class="gridOptions"></div>
+                  </div>
+                  <b class="priceOptionsTotal"></b>
+                </div>
+                <div class="drop_bottom"></div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="card_customizer_app">
+
+            <div class="header_card_customizer_app">
+              {% render 'icon-chevron-down' %}
+              <h4>
+                Bottom
+              </h4>
+              <div class="popUpHover_wrapper">
+                <button class="togglePopUpHover">
+                  {% render 'icon-question' %}
+                </button>
+                <div class="popUpHover">
+                  <b>Cup Size</b>
+                  <p>
+                    Choose your cup size from A to P.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="selection_parts_customizer_app">
+
+              <div class="selector_customizer_app desactive" draggable="true" part-data="areola size" >
+                <div class="drop_top"></div>
+                <div class="emptyPart">
+                  {% render 'icon-dragable' %}
+                  <div class="icon_selector">
+                    {% render 'icon-iris' %}
+                  </div>
+                  <h4 class="name_selector_customizer_app">
+                    Areola Size 
+                  </h4>
+                  <span>
+                    - Select part
+                  </span>
+                  <button class="btn_select" part-data="areola size">
+                    Select
+                  </button>
+                </div>
+                <div class="FillPart">
+                  {% render 'icon-dragable' %}
+                  <img class='imageCurrentOption' src="">
+                  <div class="contentOptionsPart">
+                    <h4 class="name_selector_customizer_app">
+                      Areola Size <button class="btn_select" part-data="areola size">Edit</button>
+                    </h4>
+                    <span class="namepart"> - Name Part</span>
+                    <div class="gridOptions"></div>
+                  </div>
+                  <b class="priceOptionsTotal"></b>
+                </div>
+                <div class="drop_bottom"></div>
+              </div>
+
+              <div class="selector_customizer_app desactive" draggable="true" part-data="nipple color">
+                <div class="drop_top"></div>
+                <div class="emptyPart">
+                  {% render 'icon-dragable' %}
+                  <div class="icon_selector">
+                  </div>
+                  <h4 class="name_selector_customizer_app">
+                    Nipple Color 
+                  </h4>
+                  <span>
+                    - Select part
+                  </span>
+                  <button class="btn_select" part-data="nipple color">
+                    Select
+                  </button>
+                </div>
+                <div class="FillPart">
+                  {% render 'icon-dragable' %}
+                  <img class='imageCurrentOption' src="">
+                  <div class="contentOptionsPart">
+                    <h4 class="name_selector_customizer_app">
+                      Nipple Color<button class="btn_select" part-data="nipple color">Edit</button>
+                    </h4>
+                    <span class="namepart"> - Name Part</span>
+                    <div class="gridOptions"></div>
+                  </div>
+                  <b class="priceOptionsTotal"></b>
+                </div>
+                <div class="drop_bottom"></div>
+              </div>
+
+              <div class="selector_customizer_app desactive" draggable="true" part-data="finger nails" >
+                <div class="drop_top"></div>
+                <div class="emptyPart">
+                  {% render 'icon-dragable' %}
+                  <div class="icon_selector">
+                    {% render 'icon-finger' %}
+                  </div>
+                  <h4 class="name_selector_customizer_app">
+                    Finger Nails 
+                  </h4>
+                  <span>
+                    - Select part
+                  </span>
+                  <button class="btn_select" part-data="finger nails">
+                    Select
+                  </button>
+                </div>
+                <div class="FillPart">
+                  {% render 'icon-dragable' %}
+                  <img class='imageCurrentOption' src="">
+                  <div class="contentOptionsPart">
+                    <h4 class="name_selector_customizer_app">
+                      Finger Nails<button class="btn_select" part-data="finger nails">Edit</button>
+                    </h4>
+                    <span class="namepart"> - Name Part</span>
+                    <div class="gridOptions"></div>
+                  </div>
+                  <b class="priceOptionsTotal"></b>
+                </div>
+                <div class="drop_bottom"></div>
+              </div>
+
+              <div class="selector_customizer_app desactive" draggable="true" part-data="breast type" >
+                <div class="drop_top"></div>
+                <div class="emptyPart">
+                  {% render 'icon-dragable' %}
+                  <div class="icon_selector">
+                    {% render 'icon-bubis' %}
+                  </div>
+                  <h4 class="name_selector_customizer_app">
+                    Breast Type 
+                  </h4>
+                  <span>
+                    - Select part
+                  </span>
+                  <button class="btn_select" part-data="breast type">
+                    Select
+                  </button>
+                </div>
+                <div class="FillPart">
+                  {% render 'icon-dragable' %}
+                  <img class='imageCurrentOption' src="">
+                  <div class="contentOptionsPart">
+                    <h4 class="name_selector_customizer_app">
+                      Breast Type<button class="btn_select" part-data="breast type">Edit</button>
+                    </h4>
+                    <span class="namepart"> - Name Part</span>
+                    <div class="gridOptions"></div>
+                  </div>
+                  <b class="priceOptionsTotal"></b>
+                </div>
+                <div class="drop_bottom"></div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+    </div>
+
+      <div class="column_customizer_app">
+          <h3 class="h3">
+            Your Dream Doll
+          </h3>
+          <div class="sliderCustomizer">
+            <button class="previousImage desactive">
+              {% render 'icon-chevron-left' %}
+            </button>
+            <div class="carruselCustomizer">
+
+            </div>
+            <button class="nextImage">
+              {% render 'icon-chevron-right' %}
+            </button>
+          </div>
+          <div class="cards_customizer_app">
+            <div class="card_customizer_app">
+              <h4>
+                Name Your Doll
+              </h4>
+              <input type="text" class="name_doll_customizer_app" placeholder="Name Doll">
+              <button class="saveNameDoll">
+                  Save
+              </button>
+            </div>
+
+            <div class="card_customizer_app">
+              <div class="header_card_customizer_app">
+                <h4 class="primary_color">
+                  Select Pricing Method
+                </h4>
+                <button class="action_card_customizer_app">
+                  Compare Pricing Tiers
+                </button>
+              </div>
+              <div class="optionsPay">
+
+              </div>
+            </div>
+
+            <div class="card_customizer_app">
+              <div class="header_card_customizer_app">
+                <h4 class="nameHeaderDoll">
+                  Unnamed's price
+                </h4>
+              </div>
+            
+              <div class="price_module_custimizer">
+                <div class="priceContainer">
+                  <span class="price"></span>
+                  <p class="tax_sentence">Include tax and customs</p>
+                </div>
+                <div class="price_module_btn_cart">
+                  <button class="btn_save desactive nextStep">
+                    {% render 'icon-cartv3' %}
+                    Confirm
+                  </button>
+                </div>
+              </div>
+              
+              <div class="method_payments_module_price">
+                <span>
+                  Guaranteed SAFE Checkout
+                </span>
+                <div class="icons_method_payments_module_price">
+                  {% render 'icon-paypal' %}
+                  {% render 'icon-mastercard' %}
+                  {% render 'icon-visa' %}
+                  {% render 'icon-amex' %}
+                  {% render 'icon-shopify' %}
+                </div>
+              </div>
+
+              <div class="benefits_value">
+                <div class="note_value">
+                  {% render 'icon-exclamation' %}
+                  <p>
+                    <b>Note:</b> Order within the next <b>2 hours 30 minutes</b> will be shipped by <b>December 15</b> (approximately)</b>
+                  </p>
+                </div>
+                <h4>
+                  Value Benefits
+                </h4>
+                <div class="btns">
+                  <a href="" class="btn_secondary">
+                    Compare Pricing Tiers
+                  </a>
+                  <a href="" class="btn_secondary">
+                    We Price Match
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+  </div>
+
+  <div class="flex_form_desactive stepFive"></div>
+
+</div>

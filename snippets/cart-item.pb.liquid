@@ -1,0 +1,19 @@
+
+{% assign pb_price = item.price %}
+{% assign pb_line_price = item.line_price %}
+{% assign pb_final_line_price = item.final_line_price %}
+{% assign pb_final_price = item.final_price %}
+{% assign pb_original_line_price = item.original_line_price %}
+{% assign pb_original_price = item.original_price %}
+
+{% for property in item.properties %}
+    {% if property.first == '_pbCurrentPrice' %}
+        {% assign pb_price = property.last %}
+        {% assign pb_final_price = pb_price %}
+        {% assign pb_line_price = pb_price | times: item.quantity %}
+        {% assign pb_final_line_price = pb_line_price %}
+        {% assign pb_original_price = pb_price %}
+        {% assign pb_original_line_price = pb_line_price %}
+    {% endif %}
+{% endfor %}
+

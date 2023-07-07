@@ -1,0 +1,146 @@
+<script>
+function mwApoCustom() {
+  function getValue(id) {
+    if (typeof mwApoInit.response !== "undefined") {
+      for (const val of Object.values(mwApoInit.response)) {
+        for (const key in val.values) {
+          if (key == id) {
+            if (typeof val.values[id]) {
+              return val.values[id].value.title;
+            }
+          }
+        }
+      }
+    }
+  }
+    
+  function addOptionsName() {
+    const options = document.querySelectorAll('.mw-option--type-swatch .mw-option__value, .mw-option--type-multiswatch .mw-option__value');
+    options.forEach((option) => {
+      let id = option.getAttribute('data-value-id');       
+      let value = getValue(id);  
+      let divMWS = document.createElement('div');
+      
+      divMWS.classList.add('mws_option-name');
+      divMWS.innerHTML = value;
+      option.appendChild(divMWS);
+    });
+  }
+  function addShowHideOptions() {
+    
+    function showHideOptions(element) {
+      if (element) {
+         element.classList.toggle('mws-hide');
+      }
+    } 
+    
+    setTimeout(function () {
+       let optionsTitle = document.querySelectorAll('.mw-option .mw-stack__item:first-child');
+        if (optionsTitle) {    
+          console.log(optionsTitle)
+          optionsTitle.forEach(element => {     
+            
+            let optionsBlock = element.nextElementSibling;
+            optionsBlock ? optionsBlock.classList.add('mws-hide') : '';
+            
+            element.addEventListener("click", (e) => {
+             element.classList.toggle('title_collapsed');
+             showHideOptions(optionsBlock);
+           });          
+          });  
+        }   
+     },50);
+  }
+  
+  window.mwApoInit  = window.mwApoInit  || {};
+  window.mwApoInit.onEvent = function (event, args) {  
+    if (event == "init::finish") { 
+      if (document.querySelector(".btm-btnctr")) {
+        document.querySelector(".btm-btnctr").style.display = "none";
+        document.querySelector(".shopify-product-form").classList.add('mws-text-hide');
+      }
+      addShowHideOptions();
+  
+      setTimeout(function () {
+       addOptionsName();
+     }, 100);
+    }
+  };
+  window.mwApoInit.onCallback = function (event, data) {
+     return data;
+  };
+  window.mwApoInit.settings.selectors.product.gallery_container = '.custom_selector';
+}
+</script>
+
+<style>
+
+  .mw-apo-container::before {
+    content: "OR PERSONALIZE YOUR DOLL BELOW";
+    display: block;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-align: center;
+    margin: auto;
+    background: url(https://cdn.shopify.com/s/files/1/0024/8070/1503/files/personalize4_603x.jpg) center no-repeat;
+    background-size: contain;
+    color: #b00a93;
+    font-weight: bold;
+    width: 100%;
+    font-size: 17px;
+    text-shadow: 1px 1px #efefef;
+    transform: translateY(-25px);
+  } 
+  .shopify-product-form.mws-text-hide::after {
+     content: none !important;
+  }
+  
+  .mw-option .mw-stack.mw-stack--spacing-tight:after {
+    content: "";
+    display: block;
+    width: 22px;
+    height: 22px;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='10' height='6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2357647E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 10px;
+    position: absolute;
+    right: 14px;
+    bottom: -4px;
+    border: 1px solid #d5dae8;
+    border-radius: 2px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    transform: rotate(180deg);
+  }
+  
+  .title_collapsed .mw-stack.mw-stack--spacing-tight:after, .mw-stack__item .title_collapsed:after {
+     transform: rotate(360deg) !important;
+  }
+  
+ .mw-option .mw-stack__item:nth-child(2).mws-hide {
+    max-height: 0 !important;
+    transition: max-height 0.15s ease-out;
+    overflow: hidden;
+  }
+  
+ .mw-option {
+   background-color: gainsboro;
+  }
+
+  label.mw-label {
+    padding-left: 5px;
+  }
+
+  .mws_option-name {
+    max-width: 100px;
+    line-height: 14px;
+    font-size: small;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+</style>

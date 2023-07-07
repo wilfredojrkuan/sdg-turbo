@@ -1,0 +1,430 @@
+<style>
+  .footsec p{
+   color: #dabec1!important;
+    font-size: 15px;
+  }
+</style>
+{% comment %}
+** Footer - default view **
+- Static section
+- Uses blocks
+{% endcomment %}
+<!-- {% include 'footer-vid' %} -->
+<hr class="footer-hr"/>
+{% if template.name == "index" %} 
+{% comment %}{% include 'accordion-footer' %} {% endcomment %}
+{% endif %}
+<hr class="footer-hr" />
+{% include 'checkout-footer' %}
+<hr class="footer-hr" />
+<footer class="footer">
+
+  
+  <div class="container footer-menu-wrap">
+   
+      {% for block in section.blocks %}
+        <div class="{% if forloop.length >= 5 %}three columns{% elsif forloop.length == 4 %}four columns{% elsif forloop.length == 3 %}one-third column{% elsif forloop.length == 2 %}eight columns{% endif %} medium-down--one-whole" {{ block.shopify_attributes }}>
+          {% if block.type == 'logo' %}
+            <div class="text-align--{{block.settings.text_align}}">
+              {% if block.settings.image %}
+                <img  src="{{ block.settings.image | img_url: '100x' }}"
+                      alt="{{ block.settings.image.alt | escape }}"
+                      class="footer-logo lazyload {{ settings.image_loading_style }}"
+                      data-sizes="25vw"
+                      style="max-width: {{- block.settings.image.width -}}px"
+                      data-src="{{ block.settings.image | img_url: '2048x' }}"
+                      data-srcset=" {{ block.settings.image | img_url: '200x' }} 200w,
+                                    {{ block.settings.image | img_url: '300x' }} 300w,
+                                    {{ block.settings.image | img_url: '400x' }} 400w,
+                                    {{ block.settings.image | img_url: '500x' }} 500w,
+                                    {{ block.settings.image | img_url: '600x' }} 600w,
+                                    {{ block.settings.image | img_url: '1000x' }} 1000w"
+                   />
+              {% else %}
+                <div class="logo">{{ shop.name }}</div>
+              {% endif %}
+            </div>
+
+          {% elsif block.type == 'newsletter' %}
+
+          <div class="newsletter_section">
+
+            {% if block.settings.title != blank %}
+              <h6>{{ block.settings.title }}</h6>
+            {% endif %}
+            {% if block.settings.newsletter_text != blank %}
+              {{ block.settings.newsletter_text }}
+            {% endif %}
+
+            <div class="newsletter">
+              <span class="message"></span>
+              {% if settings.mailchimp_link != blank %}
+                <form action="{{ settings.mailchimp_link }}" method="post" name="mc-embedded-subscribe-form" id="contact_form" target="_blank">
+                  {% if block.settings.show_firstname %}
+                    <input type="text" value="" class="firstName" name="FNAME" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}">
+                  {% endif %}
+                  {% if block.settings.show_lastname %}
+                    <input type="text" value="" name="LNAME" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}">
+                  {% endif %}
+                  <input type="email" value="" name="EMAIL" class="contact_email" placeholder="{{ 'general.newsletter_form.placeholder' | t }}">
+                  <input type="submit" value="{{ 'general.newsletter_form.submit' | t }}" class="action_button sign_up" name="subscribe" />
+                </form>
+              {% else %}
+                {% form 'customer' %}
+                  {% if form.posted_successfully? %}
+                    <p><em>{{ 'general.newsletter_form.success_text' | t }}</em></p>
+                  {% elsif form.errors %}
+                    {% for field in form.errors %}
+                      <p><em>{{ field }} - {{ form.errors.messages[field] }}</em></p>
+                    {% endfor %}
+                  {% endif %}
+
+                  <input type="hidden" name="contact[tags]" value="prospect,newsletter"/>
+                  {% if block.settings.show_firstname %}
+                    <input type="text" class="firstName" name="contact[first_name]" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}" />
+                  {% endif %}
+                  {% if block.settings.show_lastname %}
+                    <input type="text" name="contact[last_name]" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}" />
+                  {% endif %}
+
+                  <input type="hidden" name="challenge" value="false" />
+                  <input type="email" class="contact_email" name="contact[email]" required placeholder="{{ 'general.newsletter_form.placeholder' | t }}" />
+                  <input type='submit' class="action_button sign_up" value="{{ 'general.newsletter_form.submit' | t }}" />
+                {% endform %}
+              {% endif %}
+            </div>
+            {% if block.settings.show_social %}
+              {% include 'social-icons' %}
+            {% endif %}
+          </div>
+
+          {% elsif block.type == 'link_list' %}
+            <div class="footer_menu">
+              {% if block.settings.menu != blank %}
+              
+                <h4 style="color:#f844ab; letter-spacing:normal;"><strong>Information</strong></h4>
+                <div class="toggle_content">
+                  <ul class="footer-ul">
+                    {% for link in linklists[block.settings.menu].links %}
+                      {%- comment %}<locksmith:286c>{% endcomment -%}
+                        {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists[block.settings.menu], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                      {%- comment %}</locksmith:286c>{% endcomment -%}
+                      <li><p><a href="{{ link.url }}">{{ link.title }}</a></p></li>
+                    {% endfor %}
+                  </ul>
+                 <div class="footer-search">
+               {% include 'search-form' %}
+              </div>
+                </div>
+              {% else %}
+                <h6>Menu title<span class="right icon-down-arrow"></span></h6>
+                <div class="toggle_content">
+                  <ul>
+                    <li><p>{{ 'homepage.onboarding.no_content' | t }}</p></li>
+                  </ul>
+                </div>
+              {% endif %}
+            </div>
+
+          {% elsif block.type == 'text' %}
+            <div class="footer_content footer-text {% if block.settings.title == blank %}no-footer-title{% endif %}">
+              {% if block.settings.title != blank %}
+                <h6>{{ block.settings.title }}<span class="right icon-down-arrow"></span></h6>
+              {% endif %}
+              {% if block.settings.content %}
+                <div class="toggle_content">
+                  <span class="tel-no">{{ block.settings.content }}</span>
+                  {% comment %}<div class="footsec">
+                    <p>Support Hours:</p>
+
+                    <p>Email/Chat (support@sexdollgenie.com): Mon-Sun 9am-6pm EST</p>
+
+                    <p>Phone/SMS (844-739-9940): Sat-Wed 9am-6pm EST</p>
+                  </div>{% endcomment %}
+                    
+                  
+                </div>
+              {% endif %}
+            </div>
+          {% elsif block.type == 'page' %}
+            <div class="footer_content footer-text">
+              {% if block.settings.page != blank %}
+                <h6>{{ pages[block.settings.page].title }}<span class="right icon-down-arrow"></span></h6>
+                <div class="toggle_content">
+                  {{ pages[block.settings.page].content }}
+                </div>
+              {% else %}
+                <h6>Page title<span class="right icon-down-arrow"></span></h6>
+                <div class="toggle_content">
+                  <p>{{ 'homepage.onboarding.no_content' | t }}</p>
+                </div>
+              {% endif %}
+            </div>
+
+          {% elsif block.type == 'html' %}
+            {% comment %}@TODO - Add HTML section for maps, widgets, embedding, etc{% endcomment %}
+
+          {% elsif block.type == 'empty' %}
+            <div class="empty-column"></div>
+
+          {% endif %}
+
+          {% assign social_media_column = section.settings.social_media_column | plus: 0  %}
+
+          {% if block.settings.social_icons_footer %}
+            {% assign social_icons = true %}
+            <div class="footer-social-icons">
+              {% include 'social-icons' %}
+            </div>
+          {% endif %}
+
+        </div>
+        {% if forloop.last and social_icons %}
+          <div class="footer-social-icons--mobile sixteen columns">
+            {% include 'social-icons' %}
+          </div>
+        {% endif %}
+      {% endfor %}<hr class="hr-footer" />
+    
+    
+    {% comment %}
+    
+    
+    <div class="two columns alpha">
+      <p></p>
+      </div>
+      <div class="four columns row footer_credits">
+        <p class="credits">
+          &copy; {{ "now" | date: "%Y" }} {{ shop.name | link_to: '/' }}.
+          {{ section.settings.copyright_text }}
+          {% if section.settings.display_designed_by %}
+            {{ 'layout.general.designer_credits_html' | t }}
+          {% endif %}
+          <!--{{ powered_by_link | split: '" ' | join: '?ref=out-of-the-sandbox" ' | split: '">' | join: '?ref=out-of-the-sandbox">' }}-->
+        </p>
+		
+        {% if section.settings.display_payment_methods %}
+          <div class="payment_methods">
+            {% for type in shop.enabled_payment_types %}
+              {{ type | payment_type_svg_tag: class:'payment-icon' }}
+            {% endfor %}
+            
+          </div>
+        {% endif %}
+                    
+
+      </div><!--end footer_credits-->
+    <div class="four columns autho-container">
+      <!-- (c) 2005, 2019. Authorize.Net is a registered trademark of CyberSource Corporation --> <div class="AuthorizeNetSeal"> <script type="text/javascript" language="javascript">var ANS_customer_id="f86d49b0-697d-455c-afc5-178dc4373c50";</script> <script type="text/javascript" language="javascript" src="//verify.authorize.net:443/anetseal/seal.js" ></script> </div>
+        	<a href="//www.dmca.com/Protection/Status.aspx?ID=3d5aaee7-4cea-4fe8-9449-2386ccdbc5c3" title="DMCA.com Protection Status" class="dmca-badge"> <img src="//images.dmca.com/Badges/dmca_protected_sml_120l.png?ID=3d5aaee7-4cea-4fe8-9449-2386ccdbc5c3" alt="DMCA.com Protection Status"></a> <script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
+          </div>
+        <div class="four columns scl-btns">
+          <ul class="social-media">
+   
+              <li><a href="https://twitter.com/sexdollgenie" target="_blank"<i class="icon-twitter"></i></a></li>
+              <li><a href="https://www.facebook.com/Sex-Doll-Genie-219115845540882/" target="_blank"><i class="icon-facebook"></i></a></li>
+              <li><a href="https://www.pinterest.cl/sexdollgenie/" target="_blank"><i class="icon-pinterest"></i></a></li>
+              <li><a href="https://www.instagram.com/sexdollgenie/" target="_blank"><i class="icon-instagram"></i></a></li>
+
+
+
+              <li><a href="https://vimeo.com/sexdollgenie" target="_blank"><i class="fa fa-vimeo"></i></a></li>	
+
+          </ul>
+          </div>
+        <div class="two columns omega">
+            
+          <p></p>
+          </div>
+{% endcomment %}
+</footer>
+
+{% include 'last-footer' %}
+
+{% schema %}
+
+{
+  "name": "Footer",
+  "class": "footer-section",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright text"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_designed_by",
+      "label": "Show theme designer credits",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "display_payment_methods",
+      "label": "Show payment method icons",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Logo"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Logo alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Subscribe today!"
+        },
+        {
+          "type": "richtext",
+          "id": "newsletter_text",
+          "label": "Text"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_firstname",
+          "label": "Show first name"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_lastname",
+          "label": "Show last name"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_social",
+          "label": "Show social media icons"
+        }
+      ]
+    },
+    {
+      "type": "link_list",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "info": "This menu won't show drop-down items"
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "page",
+      "name": "Page",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Content page"
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Text",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "empty",
+      "name": "Empty column",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "logo"
+      },
+      {
+        "type": "link_list"
+      },
+      {
+        "type": "link_list"
+      },
+      {
+        "type": "text"
+      }
+    ]
+  }
+}
+
+{% endschema %}

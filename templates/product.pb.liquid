@@ -1,0 +1,32 @@
+<div id="pbContainer"></div>
+<script type="text/javascript">
+    function getCORS(url, success) {
+      var xhr = new XMLHttpRequest();
+      if (!('withCredentials' in xhr)) xhr = new XDomainRequest(); // fix IE8/9
+      xhr.open('GET', url);
+      xhr.onload = success;
+      xhr.send();
+      return xhr;
+  }
+
+  getCORS('/apps/productbuilder/liquid/product/{{ shop.domain }}/{{ product.id }}/?variant={{ product.selected_or_first_available_variant.id }}', function(request){
+      var response = request.currentTarget.response || request.target.responseText;
+
+      var container = document.getElementById('pbContainer');
+      container.innerHTML = response;
+
+      Array.prototype.forEach.call(
+            container.getElementsByTagName('script'),
+            function(script){ 
+              if (script.src) {
+                  var old_scr = container.removeChild(script);
+                  var new_scr = document.createElement('script');
+                  new_scr.src = old_scr.src;
+                  document.head.appendChild(new_scr);
+              } else {
+                window.eval(script.textContent) 
+              }
+            },
+        );
+  });
+</script>

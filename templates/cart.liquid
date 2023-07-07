@@ -1,0 +1,15 @@
+{% comment %}
+  The contents of the cart.liquid template can be found in /sections/cart-template.liquid
+{% endcomment %}
+
+{% section 'cart-template' %}
+
+<script>
+   document.sezzleConfig =
+   {
+     targetXPath: ".subtotal/.cart_subtotal/.right/.money",
+     renderToPath: "../../SPAN-2",
+     merchantID: "5a9cc04d-301a-4ab7-b159-e57fa1416959",
+     alignment: "right",
+   }
+</script>

@@ -1,0 +1,206 @@
+<style>
+     .whatsinc img {
+      width: 55%;
+     }
+    .mediaWrapper {
+        height: 600px!important;
+         width: 100%!important;
+       }
+     .desctwo {
+       font-style: italic;
+     }
+
+     table td {
+       border: none;
+     }
+
+     table tr {
+       border: none;
+     }
+
+     table td:first-child {
+       border: none;
+     }
+
+     table tr:first-child {
+       border: none;
+     }
+     {% for tag in product.tags %}
+    	{% if tag contains "onsale" %}
+
+    .threeway {
+        display: none;
+       }
+    {% endif %} {% endfor %}
+</style>
+<hr />
+<div class="bot-desc">
+    <ul class="tabs">
+        <li><a class="active" href="#tab1">Description</a></li>
+        <!-- <li class="{% for tag in product.tags %}
+  {% if tag contains 'clothing' %}hide{% break %}{% endif %}
+{% endfor %}"><a href="#tab2 ">What's Included?</a></li> -->
+        <li><a href="#tab3">Shipping</a></li>
+        <li><a href="#tab4">Delivery And Returns</a></li>
+        <li><a href="#tab5">Why Buy From Us</a></li>
+    </ul>
+    <ul class="tabs-content">
+        <li class="active" id="tab1">
+            {% if product.tags contains 'Technical: Instock' %}
+            <img class="order_process" style="width: 100%;" src="https://cdn.shopify.com/s/files/1/0024/8070/1503/t/36/assets/readytoship-timeline.jpg" /><br />
+            <img class="order_process_mobile" style="width: 100%;" src="https://cdn.shopify.com/s/files/1/0024/8070/1503/t/36/assets/SDG-Order-Timeline-Vertical.jpeg" /><br />
+            {% else %}
+            <img class="order_process" style="width: 100%;" src="https://cdn.shopify.com/s/files/1/0024/8070/1503/files/processBW_1150x.jpg" /><br />
+            <img class="order_process_mobile" style="width: 100%;" src="https://cdn.shopify.com/s/files/1/0024/8070/1503/files/process_V_BW_750x.jpg" /><br />
+
+            {% endif %} {% if section.settings.product_description_position == "top" %} {% if product.description != blank %}
+            <div class="description" itemprop="description">
+                {{ product.description | split: '
+                <!-- split -->' | first }}
+                <!--         <div class="product-below--img">
+  	<a href="#"><img alt="" src="//cdn.shopify.com/s/files/1/0024/8070/1503/t/2/assets/product_desc_below.png?1687564725327269757"></a>
+  </div> -->
+            </div>
+            {% endif %} {% endif %}
+        </li>
+        <li id="tab2">
+            <div class="whatsinc"></div>
+        </li>
+        <li id="tab3">
+            {% if product.tags contains 'Technical: Instock' %}
+            <p>All ready-to-ship sex dolls are pre-optioned and there are no customization options available at the moment. Our ready-to-ship dolls are stocked in our respective warehouses and are available for ultra fast delivery.</p>
+
+            <p>On average it takes about 5-8 days for the doll to be delivered to you. If for some reason, due to extenuating circumstances e.g. natural disasters, your order gets delayed, we will notify you immediately.</p>
+
+            <p>Will test the doll and ship the order immediately once the order is confirmed, we will also send you tracking details and other important instructions. {% else %}</p>
+
+            <table>
+                <tr>
+                    <p>All dolls are custom made for you according to your preferences. Even the ones ordered "as-is".</p>
+
+                    <p>
+                        So, on average it takes about 3-6 weeks for the doll to be delivered to you. During the normal season, we average around 12-15 days from ordering to delivery (not always possible). If for some reason, due to
+                        extenuating circumstances e.g. natural disasters, your order gets delayed, we will notify you immediately.
+                    </p>
+
+                    <p>When the order is shipped, we will also send you tracking details and instructions on how to schedule an in-store pickup if needed.</p>
+                </tr>
+            </table>
+            {% endif %}
+        </li>
+        <li id="tab4">
+            {% if product.tags contains 'Technical: Instock' %}
+            <p>
+                <b>Please allow 5-8 days for your order to arrive. All ready-to-ship dolls are pre-optioned. After the order is confirmed, we inspect and prepare the doll for delivery with utmost care.</b> We source products from all over
+                the world to bring you epic offers and the lowest prices. This means sometimes your products will arrive separately (always in discreet packaging).
+            </p>
+
+            <p>
+                Returns are easy, simply contact us for a returns number and send your item to our returns centre for fast processing. We'll get you a replacement or refund in a snap! Please refer to our
+                <a href="https://sexdollgenie.com/pages/genie-guarantee">Genie Guarantee</a> guidelines for more info.
+            </p>
+            {% else %} 
+              <table width="100%" class="desctab">
+                <tbody>
+                    <tr>
+                        <td><img src="//cdn.shopify.com/s/files/1/0981/6784/files/shipping-times_small.png?15790463219331670855" /></td>
+                        <td>&nbsp; &nbsp;&nbsp;</td>
+                        <td>
+                            &nbsp;
+                            <div>
+                                <meta charset="utf-8" />
+                            </div>
+                            <p>
+                                <b>Please allow 3-6 weeks for your order to arrive. All dolls are custom made after we receive your order with utmost care. &nbsp;</b>We source products from all over the world to bring you epic offers and the lowest
+                                prices. This means sometimes your products will arrive separately (always in discreet packaging). <i>Gynoid Dolls production time will take more than 2 months even on White Glove Services orders.</i>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="//cdn.shopify.com/s/files/1/0981/6784/files/easy_returns_small.png?18284933676961159206" /></td>
+                        <td></td>
+                        <td>
+                            <div>
+                                <meta charset="utf-8" />
+                            </div>
+                            <p>
+                                <strong>Returns are easy</strong>, simply <a contact-us="" target="_blank" title="Contact Us">contact us</a> for a returns number and send your item to our returns centre for fast processing. We'll get you a replacement
+                                or refund in a snap! Please refer to our <u><a href="https://sexdollgenie.com/pages/genie-guarantee">Genie Guarantee</a></u> guidelines for more info.
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+  
+            {% endif %}
+        </li>
+        <li id="tab5">
+            <strong>Here are 4 more great reasons&nbsp;to buy from us:</strong>
+            <p></p>
+            <table width="100%">
+                <tbody>
+                    <tr>
+                        <td><img src="//cdn.shopify.com/s/files/1/1291/3935/t/34/assets/topreasons_4_image.png?17899245814651362506" alt="" /></td>
+                        <td></td>
+                        <td>
+                            <div>
+                                <meta charset="utf-8" />
+                            </div>
+                            <p>
+                                <strong>Returns are easy</strong>, simply <a href="/contact-us%22" target="_blank" title="Contact Us">contact us</a> for a returns number and send your item to our returns centre for fast processing. We'll
+                                get you a replacement or refund in a snap!
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="//cdn.shopify.com/s/files/1/1291/3935/t/34/assets/lowerst-price_5_image.png?10498302683113658376" alt="" /></td>
+                        <td></td>
+                        <td>
+                            <div>
+                                <meta charset="utf-8" />
+                            </div>
+                            <p><strong>In the unlikely event that you find your item cheaper at another online store</strong>, just let us know and we'll beat the competitor's pricing hands-down.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="//cdn.shopify.com/s/files/1/1291/3935/t/34/assets/topreasons_3_image.png?1230583278367123527" alt="" /></td>
+                        <td></td>
+                        <td>
+                            <div>
+                                <meta charset="utf-8" />
+                            </div>
+                            <p><strong>We insist that you love everything you buy from us</strong>. If you're unhappy for any reason whatsoever, just let us know and we'll bend over backwards to make things right again.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="//cdn.shopify.com/s/files/1/1291/3935/t/34/assets/topreasons_1_image.png?1230583278367123527" alt="" /></td>
+                        <td></td>
+                        <td>
+                            <div>
+                                <meta charset="utf-8" />
+                            </div>
+                            <strong>Ordering from Sex Doll Genie is 100% safe and secure</strong> so you can rest easy. Your personal details are never shared, sold or rented to anyone either.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+    </ul>
+</div>
+
+{{ '//cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js' | script_tag }}
+<script>
+    var fromDate = Date.today().addDays(14);
+    var now = new Date();
+    if (fromDate.is().saturday() || fromDate.is().sunday()) {
+        fromDate = fromDate.next().monday();
+    }
+    var toDate = Date.today().addDays(25);
+    if (toDate.is().saturday() || toDate.is().sunday()) {
+        toDate = toDate.next().monday();
+    }
+    document.getElementById("fromDate").innerHTML = fromDate.toString("MMMM d");
+    document.getElementById("toDate").innerHTML = toDate.toString("MMMM d");
+</script>
+
+<hr />

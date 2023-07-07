@@ -1,0 +1,63 @@
+<style>
+.player .vp-title .vp-title-header h1 a {
+    font-size: smaller!important;
+}
+.caro-wrapper {
+    padding-bottom: 20px;
+}
+</style>
+<br/>
+<div class="sixteen columns">
+  <div class="container">
+    <div class="caro-wrapper">
+    <h1 class="center"> {{ section.settings.text-box-title }} </h1>
+      <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
+            {% for block in section.blocks %}
+              <li class="glide__slide">  <iframe src="{{ block.settings.vidlink }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen=""></iframe> </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="glide__arrows" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><</button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="feature_divider no-margin"></div>
+</div>
+{% schema %}
+{
+  "name": "Carousel",
+  "settings":[
+    {
+      "type": "text",
+      "id": "text-box-title",
+      "label": "Header",
+      "default": "title",
+      "placeholder": "Add your title here."
+    }
+],
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Embed Code",
+        "settings": [
+        {
+            "id": "vidlink",
+            "type": "html",
+            "label": "Paste embed code here."
+        }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Video Carousel",
+        "category": "VCarousel"
+      }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,45 @@
+<style>ul.search__results{display:none}.footer_menu ul.search__results{position:relative}ul.footer-ul{-moz-column-count:2;-moz-column-gap:20px;-webkit-column-count:2;-webkit-column-gap:20px;column-count:2;column-gap:20px}.footer .footer-menu-wrap h6{display:none!important}h5.teltext{color:#dabec1!important}.tel-text{color:#dabec1!important}span.tel-no p{color:#da4167!important;font-size:30px!important;font-weight:700!important}hr.hr-footer{border:none!important}div.AuthorizeNetSeal{margin:auto!important;text-align:center}.four.columns.autho-container{margin:auto!important;text-align:center}ul.social-media li{display:inline-block!important;font-size:20px!important}.footer ul.social-media li a{font-size:25px!important}.four.columns.scl-btns{text-align:right!important}p.credits{text-align:left!important}ul.social-media li a{color:#da4167!important}p.credits a{color:#da4167!important}.footer_credits{border:none!important}.addtlftr-ctr{padding:20px}</style>
+<div class="addtlftr-ctr">
+<div class="two columns alpha">
+      <p></p>
+      </div>
+      <div class="four columns row footer_credits">
+        <p class="credits">
+          &copy; {{ "now" | date: "%Y" }} {{ shop.name | link_to: '/' }} - operating under parent company, The Jumbo Shop LLC.
+          {{ section.settings.copyright_text }}
+          {% if section.settings.display_designed_by %}
+            {{ 'layout.general.designer_credits_html' | t }}
+          {% endif %}
+          <!--{{ powered_by_link | split: '" ' | join: '?ref=out-of-the-sandbox" ' | split: '">' | join: '?ref=out-of-the-sandbox">' }}-->
+        </p>
+		
+        {% if section.settings.display_payment_methods %}
+          <div class="payment_methods">
+            {% for type in shop.enabled_payment_types %}
+              {{ type | payment_type_svg_tag: class:'payment-icon' }}
+            {% endfor %}
+            <img src="https://cdn.shopify.com/s/files/1/0024/8070/1503/files/viabill_lecc.png?4142" style="margin: 0 5px;">
+          </div>
+        {% endif %}
+      </div><!--end footer_credits-->
+    <div class="four columns autho-container">
+           <div class="AuthorizeNetSeal"> <script type="text/javascript" language="javascript">var ANS_customer_id="36a5bc9f-998a-4ea6-a545-19542a81b336";</script> <script type="text/javascript" language="javascript" src="//verify.authorize.net:443/anetseal/seal.js" ></script> </div>	
+        	<a href="//www.dmca.com/Protection/Status.aspx?ID=3d5aaee7-4cea-4fe8-9449-2386ccdbc5c3" title="DMCA.com Protection Status" class="dmca-badge"> <img src="//images.dmca.com/Badges/dmca_protected_sml_120l.png?ID=3d5aaee7-4cea-4fe8-9449-2386ccdbc5c3" alt="DMCA.com Protection Status"></a> <script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
+          </div>
+        <div class="four columns scl-btns">
+          <ul class="social-media">
+   
+              <li><a href="https://twitter.com/sexdollgenie" target="_blank"<i class="icon-twitter"></i></a></li>
+              <li><a href="https://www.facebook.com/Sex-Doll-Genie-102779328273248/" target="_blank"><i class="icon-facebook"></i></a></li>
+              <li><a href="https://www.instagram.com/sexdollgenie/" target="_blank"><i class="icon-instagram"></i></a></li>
+
+
+
+              <li><a href="https://vimeo.com/sexdollgenie" target="_blank"><i class="fa fa-vimeo"></i></a></li>	
+
+          </ul>
+          </div>
+        <div class="two columns omega">
+          <p></p>
+          </div>
+</div>
